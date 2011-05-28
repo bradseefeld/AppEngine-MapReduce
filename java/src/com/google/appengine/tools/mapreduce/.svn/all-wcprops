@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/169/trunk/java/src/com/google/appengine/tools/mapreduce
+END
+SystemClock.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/SystemClock.java
+END
+DatastoreMutationPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/DatastoreMutationPool.java
+END
+AppEngineJobContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/141/trunk/java/src/com/google/appengine/tools/mapreduce/AppEngineJobContext.java
+END
+ConfigurationTemplatePreprocessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/147/trunk/java/src/com/google/appengine/tools/mapreduce/ConfigurationTemplatePreprocessor.java
+END
+MapReduceServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/155/trunk/java/src/com/google/appengine/tools/mapreduce/MapReduceServlet.java
+END
+BlobstoreRecordReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/118/trunk/java/src/com/google/appengine/tools/mapreduce/BlobstoreRecordReader.java
+END
+DatastoreInputFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/150/trunk/java/src/com/google/appengine/tools/mapreduce/DatastoreInputFormat.java
+END
+UnexpectedTemplateParameterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/UnexpectedTemplateParameterException.java
+END
+DatastoreSerializationUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/DatastoreSerializationUtil.java
+END
+BlobstoreInputFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/86/trunk/java/src/com/google/appengine/tools/mapreduce/BlobstoreInputFormat.java
+END
+DatastorePersistingStatusReporter.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/DatastorePersistingStatusReporter.java
+END
+RangeInputFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/154/trunk/java/src/com/google/appengine/tools/mapreduce/RangeInputFormat.java
+END
+ConfigurationXmlUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/ConfigurationXmlUtil.java
+END
+BlobstoreInputSplit.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/86/trunk/java/src/com/google/appengine/tools/mapreduce/BlobstoreInputSplit.java
+END
+Clock.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/Clock.java
+END
+AppEngineTaskAttemptContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/AppEngineTaskAttemptContext.java
+END
+ShardState.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/166/trunk/java/src/com/google/appengine/tools/mapreduce/ShardState.java
+END
+BlobstoreRecordKey.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/86/trunk/java/src/com/google/appengine/tools/mapreduce/BlobstoreRecordKey.java
+END
+MockClock.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/MockClock.java
+END
+QuotaConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/QuotaConsumer.java
+END
+MapReduceState.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/166/trunk/java/src/com/google/appengine/tools/mapreduce/MapReduceState.java
+END
+DatastoreRecordReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/33/trunk/java/src/com/google/appengine/tools/mapreduce/DatastoreRecordReader.java
+END
+AppEngineMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/156/trunk/java/src/com/google/appengine/tools/mapreduce/AppEngineMapper.java
+END
+SerializationUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/SerializationUtil.java
+END
+RangeRecordReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/91/trunk/java/src/com/google/appengine/tools/mapreduce/RangeRecordReader.java
+END
+AppEngineReducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/167/trunk/java/src/com/google/appengine/tools/mapreduce/AppEngineReducer.java
+END
+StringSplitUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/StringSplitUtil.java
+END
+DatastoreInputSplit.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/DatastoreInputSplit.java
+END
+QuotaManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/135/trunk/java/src/com/google/appengine/tools/mapreduce/QuotaManager.java
+END
+InputStreamIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/105/trunk/java/src/com/google/appengine/tools/mapreduce/InputStreamIterator.java
+END
+MissingTemplateParameterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/MissingTemplateParameterException.java
+END
+MapReduceXml.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/169/trunk/java/src/com/google/appengine/tools/mapreduce/MapReduceXml.java
+END
+RangeInputSplit.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/91/trunk/java/src/com/google/appengine/tools/mapreduce/RangeInputSplit.java
+END
+Writables.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/Writables.java
+END
+InvalidConfigurationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/91/trunk/java/src/com/google/appengine/tools/mapreduce/InvalidConfigurationException.java
+END
+HadoopCounterNames.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/15/trunk/java/src/com/google/appengine/tools/mapreduce/HadoopCounterNames.java
+END
