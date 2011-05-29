@@ -4,11 +4,72 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.google.appenegine.tools</groupId>
-	<artifactId>tools-mapreduce</artifactId>
-	<packaging>jar</packaging>
+	<artifactId>mapreduce-example</artifactId>
+	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+
+	<properties>
+		<gae.version>1.4.3</gae.version>
+
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>${gae.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.appengine.tools</groupId>
+			<artifactId>tools-mapreduce</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-core</artifactId>
+			<version>0.20.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+	</dependencies>
 	<build>
+		<sourceDirectory>example</sourceDirectory>
+		<outputDirectory>example/war/WEB-INF/classes</outputDirectory>
 		<plugins>
+			<plugin>
+				<groupId>net.kindleit</groupId>
+				<artifactId>maven-gae-plugin</artifactId>
+				<version>0.8.4</version>
+				<configuration>
+					<monitorPort>8082</monitorPort>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1-alpha-2</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>example/war/</directory>
+							<filtering>false</filtering>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -21,6 +82,15 @@
 						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
 						<classpathContainer>org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER</classpathContainer>
 					</classpathContainers>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
 		</plugins>

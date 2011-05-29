@@ -2,3 +2,5 @@
 build/
 dist/
 sdk/
+example/war/WEB-INF/classes/
+target/
