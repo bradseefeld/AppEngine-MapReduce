@@ -275,7 +275,7 @@ public class MapReduceServlet extends HttpServlet {
     	  BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     	  retValue = new JSONObject();
     	  // TODO: URL should be based on current env (e.g., mapreduce path may not be consistent)
-    	  retValue.put("url", blobstoreService.createUploadUrl('/mapreduce/command/upload'));
+    	  retValue.put("url", blobstoreService.createUploadUrl("/mapreduce/command/upload"));
     	  
       } else if (command.equals(LIST_CONFIGS_PATH) && !isPost) {
       
