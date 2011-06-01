@@ -237,14 +237,37 @@ function initUpload() {
   
   $.ajax({
   	url: 'command/upload_token',
-  	type: 'POST',
+  	type: 'GET',
   	dataType: 'json',
   	success: function(data) {
   	  $('#upload-form').attr('action', data.url);
   	  $('#upload-form input[type=submit]').attr('disabled', '').val('Upload');
   	}
   });
- 
+  
+  $.ajax({
+	  url: 'command/list_files',
+	  type: 'GET',
+	  dateType: 'json',
+	  success: function(data) {
+		  
+		$("#files table.content .loading").remove();
+		
+		if (data.files.length == 0) {
+			$("#files table.content").hide();
+		} else {
+			$.each(data.files, function(index, file) {
+				$("#files table.content tbody").append(
+				  $("<tr>")
+				    .append($("<td>").text(file.name))
+				    .append($("<td>").text(file.type))
+				    .append($("<td>").text(file.size))
+				    .append($("<td>").text(file.date))
+				  )
+			});
+		}
+	  }
+  });
 }
 
 //////// Running jobs overview.

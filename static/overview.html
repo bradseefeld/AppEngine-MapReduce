@@ -58,9 +58,26 @@
   </div>
 </div>
 
-<div id="upload">
+<div id="files">
+  <h2>Existing Files</h2>
+  <table class="content">
+  	<thead>
+  	  <tr>
+  	  	<th>Name</th>
+  	  	<th>Type</th>
+  	  	<th>Size</th>
+  	  	<th>Date</th>
+  	  </tr>
+  	 </thead>
+     <tbody>
+     	<tr class="loading">
+     	  <td colspan="4">Loading...</td>
+     	</tr>
+     </tbody>
+   </table>
+   
   <h2>Upload CSV</h2>
-  <form id="upload-form" method="post">	
+  <form id="upload-form" method="post" enctype="multipart/form-data">	
     <label for="upload">Upload CSV</label>
     <input id="upload" name="upload" type="file" />
     <input type="submit" value="Upload" />
