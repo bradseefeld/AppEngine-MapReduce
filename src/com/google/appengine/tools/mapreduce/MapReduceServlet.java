@@ -18,11 +18,16 @@ package com.google.appengine.tools.mapreduce;
 
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.blobstore.BlobInfo;
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.TaskAlreadyExistsException;
 import com.google.appengine.api.taskqueue.TaskOptions;
@@ -61,6 +66,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Date;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -121,7 +128,9 @@ public class MapReduceServlet extends HttpServlet {
   static final String ABORT_JOB_PATH = "abort_job";
   static final String GET_JOB_DETAIL_PATH = "get_job_detail";
   static final String START_JOB_PATH = "start_job";
-  static final String UPLOAD_TOKEN_PATH = "upload_token";
+  static final String UPLOAD_TOKEN_PATH = "command/upload_token";
+  static final String UPLOAD_PATH = "command/upload";
+  static final String LIST_FILES_PATH = "list_files";
 
 
   private DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -218,7 +227,45 @@ public class MapReduceServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
     String handler = MapReduceServlet.getHandler(request);
-    if (handler.startsWith(CONTROLLER_PATH)) {
+    
+    if (handler.startsWith(UPLOAD_TOKEN_PATH)) {
+      // Generate an upload path
+      BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+      
+      try {
+        JSONObject retValue = new JSONObject();
+        // TODO: URL should be based on current env (e.g., mapreduce path may not be consistent)
+        retValue.put("url", blobstoreService.createUploadUrl("/mapreduce/" + UPLOAD_PATH));
+        retValue.write(response.getWriter());
+        response.setContentType("application/json");
+        response.getWriter().flush();
+      } catch (JSONException e) {
+        // TODO: 
+      } catch (IOException e) {
+        // TODO: 
+      }
+      
+    } else if (handler.startsWith(UPLOAD_PATH)) {
+    	try {
+    		BlobstoreService service = BlobstoreServiceFactory.getBlobstoreService();
+    		BlobInfoFactory factory = new BlobInfoFactory();
+    		BlobKey key = service.getUploadedBlobs(request).get("upload");
+    		BlobInfo blob = factory.loadBlobInfo(key);
+    		
+    		Entity entry = new Entity("FileEntry");
+    		entry.setProperty("name", blob.getFilename());
+    		entry.setProperty("type", blob.getContentType());
+    		entry.setProperty("size", blob.getSize());
+    		entry.setProperty("dateAdded", new Date());
+    		entry.setProperty("key", key.getKeyString());
+    		ds.put(entry);
+    		response.sendRedirect("/mapreduce/status");
+    	} catch (IOException e) {
+    		
+    	}
+    	return;
+  
+    } else if (handler.startsWith(CONTROLLER_PATH)) {
       if (!checkForTaskQueue(request, response)) {
         return;
       }
@@ -249,7 +296,6 @@ public class MapReduceServlet extends HttpServlet {
   
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
     String handler = MapReduceServlet.getHandler(request);
-    System.err.println("The handler is " + handler);
     if (handler.startsWith(COMMAND_PATH)) {
       if (!checkForAjax(request, response)) {
         return;
@@ -269,14 +315,23 @@ public class MapReduceServlet extends HttpServlet {
     response.setContentType("application/json");
     boolean isPost = "POST".equals(request.getMethod());
     try {
-      if (command.equals(UPLOAD_TOKEN_PATH)) {
+      if (command.equals(LIST_FILES_PATH)) {
+    	  Query q = new Query("FileEntry");
+    	  Iterator<Entity> results = ds.prepare(q).asIterator();
     	  
-    	  // Generate an upload path
-    	  BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     	  retValue = new JSONObject();
-    	  // TODO: URL should be based on current env (e.g., mapreduce path may not be consistent)
-    	  retValue.put("url", blobstoreService.createUploadUrl("/mapreduce/command/upload"));
-    	  
+    	  JSONArray files = new JSONArray();
+    	  while (results.hasNext()) {
+    		  Entity entity = results.next();
+    		  JSONObject file = new JSONObject();
+    		  file.put("name", entity.getProperty("name"));
+    		  file.put("size", entity.getProperty("size"));
+    		  file.put("type", entity.getProperty("type"));
+    		  file.put("date", entity.getProperty("dateAdded"));
+    		  file.put("key", entity.getProperty("key"));
+    		  files.put(file);
+    	  }
+    	  retValue.put("files", files);
       } else if (command.equals(LIST_CONFIGS_PATH) && !isPost) {
       
         MapReduceXml xml;

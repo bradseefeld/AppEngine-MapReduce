@@ -244,16 +244,38 @@ function initUpload() {
   	  $('#upload-form input[type=submit]').attr('disabled', '').val('Upload');
   	}
   });
-  
-  // Add link to each file to select for job
-  // When clicked, add blob key to the launch form. Show file name for humans.
-  // Job gets submitted normally!
-  
-  //.click(function() {
-  	//$(".forms input[name=some_constant]").val(blob.key).append("Execute job against " + blob.name);
-  	// Focus user to job form. How do we do inject an anchor with jquery?
-  }
  
+  $.ajax({
+	  url: 'command/list_files',
+	  type: 'GET',
+	  dateType: 'json',
+	  success: function(data) {
+		  
+		$("#files table.content .loading").remove();
+		
+		if (data.files.length == 0) {
+			$("#files table.content").hide();
+		} else {
+			$.each(data.files, function(index, file) {
+				$("#files table.content tbody").append(
+				  $("<tr>")
+				    .append($("<td>").text(file.name))
+				    .append($("<td>").text(file.type))
+				    .append($("<td>").text(file.size))
+				    .append($("<td>").text(file.date))
+				    .append($("<td>").append($("<a>").attr("href", "javascript:;").text("Select").click(function() {
+				      
+				      var name = "mapper_params.mapreduce.mapper.inputformat.blobstoreinputformat.blobkeys";
+				      //name = "mapper_params.mapreduce.mapper.inputformat.datastoreinputformat.entitykind"; // temp
+				      console.log($(".run-job input[name=" + name + "]"));
+				      console.log(file);
+				      $(".run-job input[name=" + name + "]").val(file.key);
+				    })))
+				  )
+			});
+		}
+	  }
+  });
 }
 
 //////// Running jobs overview.
