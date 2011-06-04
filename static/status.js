@@ -244,6 +244,15 @@ function initUpload() {
   	  $('#upload-form input[type=submit]').attr('disabled', '').val('Upload');
   	}
   });
+  
+  // Add link to each file to select for job
+  // When clicked, add blob key to the launch form. Show file name for humans.
+  // Job gets submitted normally!
+  
+  //.click(function() {
+  	//$(".forms input[name=some_constant]").val(blob.key).append("Execute job against " + blob.name);
+  	// Focus user to job form. How do we do inject an anchor with jquery?
+  }
  
 }
 
